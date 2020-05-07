@@ -257,7 +257,7 @@ function prepare(f, next, err) {
 
 // デバイス発見
 function foundDevice(f, address) {
-    if (f.address !== address && isLocalAddress(address)) {
+    if (f.address !== address /*&& isLocalAddress(address). This doesn't do the right thing, only checks subnet*/) {
         debug(`denonavr: Found ${f.model} on ${address}`);
         f.address = address;
         if (!f.keeper) {
